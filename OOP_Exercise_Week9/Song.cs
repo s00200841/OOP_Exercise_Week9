@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_Exercise_Week9
 {
-    class Song
+    class Song : IComparable
     {      
         public string Title { get; set; }
 
@@ -28,7 +28,18 @@ namespace OOP_Exercise_Week9
 
         public override string ToString()
         {
-            return string.Format($"{Artist,-12} {Title,-20} {Duration,-10} {MusicGenre}").ToString();
+            return string.Format($"{Artist,-12}{Title,-20}{Duration,-10}{MusicGenre}").ToString();
+        }
+
+        public int CompareTo(object other)
+        {
+            Song that = (Song)other;
+            int returnValue = this.Artist.CompareTo(that.Artist);
+            if (returnValue == 0)
+            {
+                returnValue = this.Title.CompareTo(that.Title); // if artist is the same , then sort by title also
+            }
+            return returnValue;
         }
     }
 
