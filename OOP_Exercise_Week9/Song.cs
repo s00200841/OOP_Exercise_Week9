@@ -15,20 +15,20 @@ namespace OOP_Exercise_Week9
        
         public Genre MusicGenre { get; set; }
 
-        public Song(string title, string artist, double duration, Genre musicGenre)
+        public Song(string artist, string title, double duration, Genre musicGenre)
         {
-            Title = title;
             Artist = artist;
+            Title = title;          
             Duration = duration;
             MusicGenre = musicGenre;
         }
-        public Song(string title, string artist) : this(title, artist, 0, Genre.Other) { }
+        public Song(string artist, string title) : this(artist, title, 0, Genre.Other) { }
 
         public Song() : this("Unknown", "Unknown") { }
 
         public override string ToString()
         {
-            return string.Format($"{Title} {Artist} {Duration} {MusicGenre}").ToString();
+            return string.Format($"{Artist,-12} {Title,-20} {Duration,-10} {MusicGenre}").ToString();
         }
     }
 
